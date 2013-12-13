@@ -83,7 +83,7 @@ public class GetServiceRequests extends Generic311Servlet {
 		super.doPost(request, response);
 				
 		ServletContext context = getServletContext();
-		RequestDispatcher dispatcher = context.getRequestDispatcher("/Post");
+		RequestDispatcher dispatcher = context.getRequestDispatcher("/POST");
 		dispatcher.forward(request, response);
 	}
 		
