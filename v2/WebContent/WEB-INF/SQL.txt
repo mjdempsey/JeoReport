@@ -1,0 +1,106 @@
+************************
+****GET SERVICE LIST****
+************************ 
+- RETURNS: service_id, service_name, service_description, service_metadata, service_type_content, service_group_content
+
+
+
+****************************
+****GET SERVICE KEYWORDS****
+****************************
+- RETURNS: service_keyword(s) for a given service
+
+SELECT skw.service_keyword_content
+FROM rel_service_keyword AS rkw
+INNER JOIN service_keyword skw
+  ON rkw.rel_service_keyword_keyword_id = skw.service_keyword_id
+WHERE rkw.rel_service_keyword_service_id =  "1111"
+
+****************************
+***GET SERVICE ATTRIBUTES***
+****************************
+-RETURNS: variable, code, datatype, required, datatype_description, order, required, and description for a given service
+
+SELECT sa.service_attribute_variable, sa.service_attribute_id, ad.attribute_datatype_content, sa.service_attribute_required, sa.service_attribute_datatype_description,  sa.service_attribute_order, sa.service_attribute_description 
+FROM service_attribute AS sa
+INNER JOIN attribute_datatype ad
+  ON sa.service_attribute_datatype = ad.attribute_datatype_id
+INNER JOIN rel_service_attribute rsa
+  ON sa.service_attribute_id = rsa.rel_service_attribute_attribute_id
+WHERE rsa.rel_service_attribute_service_id = "1111"
+
+****************************
+****GET ATTRIBUTE VALUES****
+****************************
+-RETURNS: values for a given attribute
+
+SELECT av.attribute_value_key, av.attribute_value_name
+FROM attribute_value AS av
+INNER JOIN rel_attribute_value rav
+  ON rav.rel_attribute_value_value_id = av.attribute_value_id
+WHERE rav.rel_attribute_value_attribute_id = "1111"
+
+****************************
+****GET SERVICE REQUEST*****
+****************************
+- RETURNS: service_request_id, status, status_notes, service_name, service_code, description, 
+agency_responsible, service_notice, requested_datetime, updated_datetime, expected_datetime, 
+address, address_id, zipcode, lat, long, and media_url, of a given service request
+
+SELECT * 
+FROM service_request AS sr
+WHERE sr.service_request_id = "1111"
+
+*******************************
+***GET SERVICE REQUEST BY ID***
+*******************************
+- RETURNS: all columns on rows that match ID(s) given
+
+SELECT * 
+FROM service_request
+WHERE service_request_id
+IN 
+
+**************************
+***GET SERVICE REQUESTS***
+**************************
+-RETURNS: all columns on rows that fit the criteria of the dynamic query
+
+SELECT * 
+from service_request AS sr
+WHERE sr.service_request_requested between '[START_DATE]' AND '[END_DATE]'
+AND status = [STATUS]
+AND service_code = [SERVICE_CODE]
+
+**************************
+**POST SERVICE REQUEST***
+**************************
+-RETURNS: service_request_id and DEFAULT_SERVICE_NOTICE
+INSERT INTO service_requests AS sr 
+(service_request_address
+service_request_code
+service_request_description
+service_request_lat
+service_request_long
+service_request_media_url
+service_request_zipcode) 
+
+VALUES (value1, value2, value3,...)
+
+*****
+
+POST VERFIFIES:
+ required arguments:
+  location parameter
+  service_code
+  required attribute(s) present
+
+ optional arguments:
+  lat
+  long
+  address_string
+  email
+  first_name
+  phone
+  description
+  media_url

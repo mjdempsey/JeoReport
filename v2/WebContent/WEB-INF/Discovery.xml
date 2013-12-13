@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<discovery>
+  <changeset>2013-07-20</changeset>
+  <contact>No contact info yet</contact>
+  <key_service>No key service yet</key_service>
+  <endpoints>
+    <endpoint>
+      <specification>http://wiki.open311.org/GeoReport_v2</specification>
+      <url>pgh311.bitnamiapp.com/v2</url>
+      <changeset>2013-07-20</changeset>
+      <type>dev</type>
+      <formats>
+        <format>text/xml</format>
+      </formats>
+    </endpoint>
+  </endpoints>
+</discovery>
